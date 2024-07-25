@@ -1,0 +1,10 @@
+<div>
+    <label>Username:</label>
+    <input [(ngModel)]="user.username" class="block w-4 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" placeholder="Enter username"/>
+  </div>
+  <div>
+    <label>Password:</label>
+    <input [(ngModel)]="user.password" class="block w-6 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" type="password" placeholder="Enter password"/>
+  </div>
+  <button (click)="saveUser()">Save User</button>
+  

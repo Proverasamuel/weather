@@ -10,4 +10,50 @@
 <body>
   <app-root></app-root>
 </body>
+<script>
+ document.addEventListener('DOMContentLoaded', (event) => {
+  const menuButton = document.querySelector('button[aria-controls="mobile-menu"]');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuOpenIcon = menuButton?.querySelector('svg:nth-child(1)');
+  const menuCloseIcon = menuButton?.querySelector('svg:nth-child(2)');
+
+  if (menuButton && mobileMenu && menuOpenIcon && menuCloseIcon) {
+    menuButton.addEventListener('click', () => {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+      menuButton.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.classList.toggle('hidden');
+      menuOpenIcon.classList.toggle('hidden');
+      menuCloseIcon.classList.toggle('hidden');
+    });
+
+    // Fecha o menu móvel se clicar fora dele
+    document.addEventListener('click', (event) => {
+      if (!menuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+        menuButton.setAttribute('aria-expanded', false);
+        mobileMenu.classList.add('hidden');
+        menuOpenIcon.classList.remove('hidden');
+        menuCloseIcon.classList.add('hidden');
+      }
+    });
+  }
+
+  // Para o menu de perfil
+  const userMenuButton = document.getElementById('user-menu-button');
+  const userMenu = document.querySelector('div[aria-labelledby="user-menu-button"]');
+
+  if (userMenuButton && userMenu) {
+    userMenuButton.addEventListener('click', () => {
+      userMenu.classList.toggle('hidden');
+    });
+
+    // Fecha o menu de perfil se clicar fora dele
+    document.addEventListener('click', (event) => {
+      if (!userMenuButton.contains(event.target) && !userMenu.contains(event.target)) {
+        userMenu.classList.add('hidden');
+      }
+    });
+  }
+});
+
+</script>
 </html>
